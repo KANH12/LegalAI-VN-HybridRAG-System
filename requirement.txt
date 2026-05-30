@@ -2,3 +2,10 @@ playwright
 #playwright install chromium
 pandas
 pyarrow
+fastparquet
+rank-bm25
+sentence-transformers
+numpy
+scikit-learn
+groq
+python-dotenv
