@@ -1,0 +1,4 @@
+playwright
+#playwright install chromium
+pandas
+pyarrow
