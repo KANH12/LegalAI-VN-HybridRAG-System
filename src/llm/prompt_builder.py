@@ -36,7 +36,8 @@ def build_legal_qa_prompt(
         Nhiệm vụ:
         - Chỉ trả lời dựa trên Context được cung cấp.
         - Trả lời trực tiếp câu hỏi trước, sau đó bổ sung ngắn gọn nếu cần.
-        - Khi có thể, hãy nhắc đến Điều/Khoản/Điểm liên quan.
+        - Khi có thể, hãy nhắc đến Điều/Khoản/Điểm liên quan (ưu tiên các Điều/Khoản/Điểm nằm chung với nhau)
+        - Tuyệt đối không tự ý đề xuất các luật chưa được xác thực!
         - Nếu Context không đủ thông tin, hãy nói rằng thông tin được cung cấp chưa đủ để kết luận.
 
         Context:

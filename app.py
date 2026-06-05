@@ -106,9 +106,9 @@ st.sidebar.markdown("### Final Context")
 
 final_top_k = st.sidebar.slider(
     "Final Top-K Contexts",
-    min_value=8,
-    max_value=12,
-    value=10,
+    min_value=10,
+    max_value=20,
+    value=15,
     step=1,
     help="Số lượng chunks cuối cùng sau RRF được đưa vào prompt cho LLM.",
 )
