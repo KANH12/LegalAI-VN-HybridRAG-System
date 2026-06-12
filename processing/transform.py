@@ -164,7 +164,7 @@ def transform_and_override_data(all_data: List[dict]) -> pd.DataFrame:
         vbhn125_keys = set(df.loc[is_vbhn125, "law_key"].unique())
         df = df[~((~is_vbhn125) & (df["law_key"].isin(vbhn125_keys)))].copy()
 
-    print("⚡ Generating hybrid RAG text fields...")
+    print("[RUNNING] Generating hybrid RAG text fields...")
 
     df["keyword_text"] = df.apply(generate_keyword_text, axis=1)
     df["embedding_text"] = df.apply(generate_embedding_text, axis=1)
