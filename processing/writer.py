@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from processing.parse import parse_document_to_raw_rows
+from processing.chunking import parse_document_to_raw_rows
 from processing.transform import (
     determine_law_name,
     determine_doc_type,
