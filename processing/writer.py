@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 
 from processing.chunking import parse_document_to_raw_rows
-from processing.transform import (
+from processing.parser import (
     determine_law_name,
     determine_doc_type,
     transform_and_override_data,
