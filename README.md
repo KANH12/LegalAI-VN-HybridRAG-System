@@ -14,6 +14,10 @@ Instead of asking the LLM directly, the system first searches legal documents us
 
 The two ranked result lists are then combined using **Reciprocal Rank Fusion (RRF)**. The final Top-K contexts are passed into the LLM to generate the answer.
 
+> ⚠️ Note: Some legal data sources have implemented anti-bot mechanisms. The current crawler may require updates or alternative data ingestion strategies.
+
+> ⚠️ Note: The project currently uses `llama-3.1-8b-instant` via Groq API, which may be subject to availability changes. The system is designed to be model-agnostic and can be adapted to other LLM providers.
+
 ## System Architecture
 
 ```text
@@ -181,6 +185,41 @@ Người sử dụng lao động có được sa thải người lao động đa
 ```text
 Cưỡng bức lao động là gì?
 ```
+
+## 📊 Evaluation
+
+The system was evaluated on a manually curated dataset of 50 Vietnamese labor law QA pairs, including reference answers, expected legal articles, and keywords.
+
+### Retrieval Performance
+
+- Article Hit@K: **0.94**
+- Keyword Hit@K: **0.98**
+- Both Hit@K: **0.94**
+
+→ Hybrid retrieval (BM25 + embeddings + RRF) effectively captures both legal articles and key phrases.
+
+### Answer Quality
+
+- Exact Match: **0.00** (not suitable for legal QA)
+- Token-level F1: **0.47**
+- Avg Latency: **~11.9s**
+- Error Rate: **0.00%**
+
+### LLM-as-a-Judge
+
+- Correctness: **3.76 / 5**
+- Groundedness: **4.36 / 5**
+- Completeness: **4.10 / 5**
+- Relevance: **4.56 / 5**
+
+→ Strong grounding and relevance, with minor gaps in multi-clause completeness.
+
+### Key Limitations & Improvements
+
+- Missing legal articles → add reranking + better retrieval weighting  
+- Incomplete answers → implement context expansion  
+- High latency → caching + local LLM deployment  
+- Judge variance → stronger model + human validation
 
 ## Current Status
 
